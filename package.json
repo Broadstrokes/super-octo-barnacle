@@ -1,0 +1,20 @@
+{
+  "name": "oauth-passport",
+  "version": "1.0.0",
+  "description": "How to setup passport on the backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "passport",
+    "oauth",
+    "express",
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
