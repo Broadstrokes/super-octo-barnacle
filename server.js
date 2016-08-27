@@ -7,11 +7,6 @@ const
 const app  = express();
 let port = process.env.PORT || 3000;
 
-const compile = (str, path) => {
-  stylus(str)
-  .set('filename', path)
-  .use(nib());
-} 
 /*
 app.set directives tell Express where we keep our views &
 to use pug 
@@ -32,7 +27,9 @@ In order to use nib, we pass in a custom compile function to the Stylus middlewa
 */
 app.use(stylus.middleware({
   src: __dirname + '/public',
-  compile: compile
+  compile: (str, path) => {
+    return stylus(str).set('filename', path).set('compress', true).use(nib());
+}
 }))
 /*
 After that it's the Express static middleware, which is used for serving static files (we tell it that our static files will live in a folder called 'public', so lets create that in the project root now)
@@ -40,7 +37,7 @@ After that it's the Express static middleware, which is used for serving static 
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/',  (req, res) => res.send('Hello world!'));
+app.get('/',  (req, res) => res.render('index', {tile: 'Home'}));
 
 app.listen(port, () => 
   console.log(`Listening on port ${port}, in ${process.env.NODE_ENV} mode!`));
