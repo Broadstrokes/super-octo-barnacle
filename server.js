@@ -23,7 +23,7 @@ app.use calls pass middleware function for Express to use
 Middleware are simply functions that have the signature fn(req, res, next)
 */
 /*
-The first piece of middleware we apply is the Express logger in 'dev' mode. This will simply log incoming requests to the console
+The first piece of middleware we apply is Morgan in 'dev' mode. This will simply log incoming requests to the console
 */
 app.use(morgan('dev'));
 /*
