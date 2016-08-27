@@ -37,7 +37,7 @@ After that it's the Express static middleware, which is used for serving static 
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/',  (req, res) => res.render('index', {tile: 'Home'}));
+app.get('/',  (req, res) => res.render('index', {title: 'Home'}));
 app.get('/about',  (req, res) => res.render('about', {tile: 'about'}));
 
 app.listen(port, () => 

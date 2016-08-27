@@ -16,8 +16,8 @@
     "pug",
     "jade",
     "stylus",
-    "nib"
-    "express"
+    "nib",
+    "express",
     "node"
   ],
   "author": "Dan S.",
