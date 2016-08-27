@@ -1,24 +1,32 @@
 {
-  "name": "oauth-passport",
+  "name": "static-site",
   "version": "1.0.0",
   "private": "true",
-  "description": "How to setup passport on the backend",
+  "description": "How build a server rendered static site",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-css": "stylus source/stylesheets/index.styl -o static/css",
+    "watch-css": "stylus source/stylesheets/index.styl -o static/css -w",
+    "clean": "rm -rf static/css && mkdir -p static/css",
+    "build": "npm run clean && npm run build-css",
+    "watch": "npm run clean && npm run watch-css & nodemon server -e js,jade",
+    "start": "node server"
   },
   "keywords": [
-    "passport",
-    "oauth",
-    "express",
+    "pug",
+    "jade",
+    "stylus",
+    "nib"
+    "express"
     "node"
   ],
-  "author": "",
+  "author": "Dan S.",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
     "morgan": "^1.7.0",
     "nib": "^1.1.2",
+    "nodemon": "^1.10.2",
     "pug": "^2.0.0-beta6",
     "stylus": "^0.54.5"
   }
