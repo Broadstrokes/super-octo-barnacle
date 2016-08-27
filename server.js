@@ -1,15 +1,16 @@
 const 
   express = require('express'),
+  morgan = require('morgan'),
   stylus = require('stylus'), 
   nib = require('nib'); 
 
 const app  = express();
 let port = process.env.PORT || 3000;
 
-(str, path) => {
+const compile = (str, path) => {
   stylus(str)
   .set('filename', path)
-  .use(nib())
+  .use(nib());
 } 
 /*
 app.set directives tell Express where we keep our views &
@@ -24,7 +25,7 @@ Middleware are simply functions that have the signature fn(req, res, next)
 /*
 The first piece of middleware we apply is the Express logger in 'dev' mode. This will simply log incoming requests to the console
 */
-app.use(express.logger('dev'))
+app.use(morgan('dev'));
 /*
 Next, the Stylus middleware is applied, which will compile our .styl files to CSS.
 In order to use nib, we pass in a custom compile function to the Stylus middleware. 
